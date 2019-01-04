@@ -1,0 +1,150 @@
+<br>
+<div align="center">
+  <mat-form-field>
+    <mat-select placeholder="Kategori Barang" [(ngModel)]="kategori_barang" (selectionChange)="onTipeNameChanged(kategori_barang)">
+      <mat-option>--</mat-option>
+      <mat-option *ngFor="let tipe of data_kategori" [value]="tipe.nama">
+        {{tipe.nama}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <mat-form-field>
+    <input matInput placeholder="Kode Barang" [(ngModel)]="kode_barang" disabled>
+  </mat-form-field>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <mat-form-field>
+    <input matInput placeholder="Barcode" [(ngModel)]="barcode">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Nama Barang" [(ngModel)]="nama">
+  </mat-form-field>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <mat-form-field>
+    <input matInput placeholder="Nama Alias" [(ngModel)]="alias">
+  </mat-form-field>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <mat-form-field>
+    <mat-select placeholder="Satuan Barang" [(ngModel)]="satuan_barang" (selectionChange)="onTipeUnitChanged(satuan_barang)">
+      <mat-option>--</mat-option>
+      <mat-option *ngFor="let tipe of data_satuan" [value]="tipe.satuan">
+        {{tipe.satuan}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Merk Barang" [(ngModel)]="merk_barang" (selectionChange)="onTipeMerkChanged(merk_barang)">
+      <mat-option>--</mat-option>
+      <mat-option *ngFor="let tipe of data_merk" [value]="tipe.merk">
+        {{tipe.merk}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <mat-form-field style="visibility: hidden">
+    <input matInput placeholder="Nama Alias">
+  </mat-form-field>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <mat-form-field style="visibility: hidden">
+    <input matInput placeholder="Nama Alias">
+  </mat-form-field>
+  </div>
+<br>
+<mat-toolbar color="warn">
+  <mat-toolbar-row>
+    <span>Harga Jual</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<br>
+<div align="center">
+  <mat-form-field>
+    <input matInput placeholder="Harga 1" [(ngModel)]="harga1">
+  </mat-form-field>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <mat-form-field>
+    <input matInput placeholder="Harga 2" [(ngModel)]="harga2">
+  </mat-form-field>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <mat-form-field>
+    <input matInput placeholder="Harga 3" [(ngModel)]="harga3">
+  </mat-form-field>
+</div>
+<br>
+
+<div [ngSwitch]="tombol" align="right" style="margin-right: 30px;">
+  <div *ngSwitchCase="'add'">
+    <button mat-raised-button color="primary" (click)="tambah()">Tambah</button>
+  </div>
+  <div *ngSwitchCase="'put'">
+    <button mat-raised-button color="primary" (click)="ubah()">Ubah</button>&nbsp;&nbsp;&nbsp;
+    <button mat-raised-button color="primary" (click)="kembali()">Batal</button>
+  </div>
+</div>
+<br>
+
+<mat-toolbar color="warn">List Data
+</mat-toolbar>
+<br>
+
+<div style="margin-right: 30px; margin-left: 30px; margin-bottom: 30px">
+  <!--<mat-form-field class="example-form">-->
+    <!--&lt;!&ndash;<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">&ndash;&gt;-->
+  <!--</mat-form-field>-->
+  <table mat-table [dataSource]="data" class="mat-elevation-z8" >
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Id Barang </th>
+      <td mat-cell *matCellDef="let element"> {{element.barang_id}} </td>
+    </ng-container>
+    <ng-container matColumnDef="kategori">
+      <th mat-header-cell *matHeaderCellDef> Kategori Barang </th>
+      <td mat-cell *matCellDef="let element"> {{convertKategori(element.isi_kategori)}} </td>
+    </ng-container>
+    <ng-container matColumnDef="kode">
+      <th mat-header-cell *matHeaderCellDef> Kode Barang </th>
+      <td mat-cell *matCellDef="let element"> {{element.kode}} </td>
+    </ng-container>
+    <ng-container matColumnDef="barcode">
+      <th mat-header-cell *matHeaderCellDef> Barcode </th>
+      <td mat-cell *matCellDef="let element"> {{element.barcode}} </td>
+    </ng-container>
+    <ng-container matColumnDef="nama">
+      <th mat-header-cell *matHeaderCellDef> Nama Barang </th>
+      <td mat-cell *matCellDef="let element"> {{element.nama}} </td>
+    </ng-container>
+    <ng-container matColumnDef="alias">
+      <th mat-header-cell *matHeaderCellDef> Nama Alias </th>
+      <td mat-cell *matCellDef="let element"> {{element.alias}} </td>
+    </ng-container>
+    <ng-container matColumnDef="satuan">
+      <th mat-header-cell *matHeaderCellDef> Satuan Barang </th>
+      <td mat-cell *matCellDef="let element"> {{convertSatuan(element.satuan)}} </td>
+    </ng-container>
+    <ng-container matColumnDef="merk">
+      <th mat-header-cell *matHeaderCellDef> Merk Barang </th>
+      <td mat-cell *matCellDef="let element"> {{convertMerk(element.merk)}} </td>
+    </ng-container>
+    <ng-container matColumnDef="harga1">
+      <th mat-header-cell *matHeaderCellDef> Harga 1 </th>
+      <td mat-cell *matCellDef="let element"> {{element.harga1}} </td>
+    </ng-container>
+    <ng-container matColumnDef="harga2">
+      <th mat-header-cell *matHeaderCellDef> Harga 2 </th>
+      <td mat-cell *matCellDef="let element"> {{element.harga2}} </td>
+    </ng-container>
+    <ng-container matColumnDef="harga3">
+      <th mat-header-cell *matHeaderCellDef> Harga 3 </th>
+      <td mat-cell *matCellDef="let element"> {{element.harga3}} </td>
+    </ng-container>
+    <ng-container matColumnDef="opsi">
+      <th mat-header-cell *matHeaderCellDef> Opsi </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button color="primary" (click)="edit(element.barang_id, data)"><mat-icon>edit</mat-icon></button>
+        <button mat-icon-button color="primary" (click)="hapus(element.barang_id)"><mat-icon>delete</mat-icon></button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

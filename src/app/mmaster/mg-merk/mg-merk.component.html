@@ -1,0 +1,51 @@
+<br>
+<div style="margin-left: 30px;" class="example-form">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Nama Merk" [(ngModel)]="isi_merk">
+  </mat-form-field>
+</div>
+
+<div [ngSwitch]="tombol" align="right" style="margin-right: 30px;">
+  <div *ngSwitchCase="'add'">
+    <button mat-raised-button color="primary" (click)="tambah()">Tambah</button>
+  </div>
+  <div *ngSwitchCase="'put'">
+    <button mat-raised-button color="primary" (click)="ubah()">Ubah</button>&nbsp;&nbsp;&nbsp;
+    <button mat-raised-button color="primary" (click)="kembali()">Batal</button>
+  </div>
+</div>
+
+<br>
+
+<mat-toolbar color="warn">List Harga</mat-toolbar>
+<br>
+
+
+<div style="margin-right: 30px; margin-left: 30px; margin-bottom: 30px;">
+  <!--<mat-form-field class="example-form">-->
+    <!--&lt;!&ndash;<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">&ndash;&gt;-->
+  <!--</mat-form-field>-->
+  <table mat-table [dataSource]="data" class="mat-elevation-z8" >
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Id Merk </th>
+      <td mat-cell *matCellDef="let element"> {{element.merk_id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="nama">
+      <th mat-header-cell *matHeaderCellDef> Nama Merk </th>
+      <td mat-cell *matCellDef="let element"> {{element.merk}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="opsi">
+      <th mat-header-cell *matHeaderCellDef> Opsi </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button color="primary" (click)="edit(element.merk_id, element.merk)"><mat-icon>edit</mat-icon></button>
+        <button mat-icon-button color="primary" (click)="hapus(element.merk_id)"><mat-icon>delete</mat-icon></button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

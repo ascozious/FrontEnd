@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Tambahkan Serial Number</h1>
+<div mat-dialog-content>
+  <form [formGroup]="formGroupDialog">
+    <table formArrayName="dataDetail" style="width: 70%; border: 1px solid black;">
+    <thead>
+    <tr>
+      <th>No. </th>
+      <th>Serial Number Asli</th>
+      <th>Serial Number baru</th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let detail of getFormArrays('dataDetail', formGroupDialog); index as detailIndex">
+    <tr [formGroupName]="detailIndex">
+      <td> {{detailIndex+1}} </td>
+      <td> <mat-form-field><input matInput formControlName="serialAsli"></mat-form-field> </td>
+      <td> <mat-form-field><input matInput formControlName="serialBaru"></mat-form-field> </td>
+    </tr>
+    </tbody>
+  </table>
+    <br>
+    <button mat-raised-button color="primary" (click)="ok(formGroupDialog.value)">Tambah</button>
+    </form>
+</div>

@@ -1,0 +1,175 @@
+<br>
+<div align="center">
+  <mat-form-field>
+    <input matInput placeholder="Nomor Dokumen">
+  </mat-form-field>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <mat-form-field>
+    <input matInput placeholder="Pengguna">
+  </mat-form-field>
+
+  <!--<mat-form-field>-->
+    <!--<mat-select placeholder="Marketing" [(ngModel)]="isi_tipe">-->
+      <!--<mat-option>&#45;&#45;</mat-option>-->
+      <!--<mat-option *ngFor="let tipe of tipe_pelanggan" [value]="tipe.value">-->
+        <!--{{tipe.value}}-->
+      <!--</mat-option>-->
+    <!--</mat-select>-->
+  <!--</mat-form-field>-->
+  <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+  <!--<mat-form-field>-->
+    <!--<mat-select placeholder="Lokasi Pembuatan">-->
+      <!--<mat-option>&#45;&#45;</mat-option>-->
+      <!--<mat-option *ngFor="let tipe of tipe_pelanggan" [value]="tipe.value">-->
+        <!--{{tipe.value}}-->
+      <!--</mat-option>-->
+    <!--</mat-select>-->
+  <!--</mat-form-field>-->
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <mat-form-field>
+    <textarea matInput placeholder="Catatan Tambahan (Optional)"></textarea>
+  </mat-form-field>
+</div>
+<br>
+<mat-toolbar color="warn">
+  <mat-toolbar-row>
+    <span>Data Pelanggan</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<br>
+<div align="center">
+  <!--<mat-form-field>-->
+    <!--<mat-select placeholder="Pelanggan" [(ngModel)]="isi_tipe">-->
+      <!--<mat-option>&#45;&#45;</mat-option>-->
+      <!--<mat-option *ngFor="let tipe of tipe_pelanggan" [value]="tipe.value">-->
+        <!--{{tipe.value}}-->
+      <!--</mat-option>-->
+    <!--</mat-select>-->
+  <!--</mat-form-field>-->
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <mat-form-field>
+    <textarea matInput placeholder="Alamat"></textarea>
+  </mat-form-field>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <mat-form-field style="visibility: hidden">
+    <textarea matInput  placeholder="Catatan Tambahan (Optional)"></textarea>
+  </mat-form-field>
+</div>
+<br>
+<!--------------------------------------------------------------------------------------------------------------------->
+<mat-toolbar color="warn">
+  <mat-toolbar-row>
+    <span>Data Transaksi</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<br>
+<div align="center">
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker2" placeholder="Tanggal Mulai Rental">
+    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+    <mat-datepicker #picker2></mat-datepicker>
+  </mat-form-field>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker3" placeholder="Tanggal Berakhir Rental">
+    <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+    <mat-datepicker #picker3></mat-datepicker>
+  </mat-form-field>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <mat-form-field style="visibility: hidden">
+    <textarea matInput  placeholder="Catatan Tambahan (Optional)"></textarea>
+  </mat-form-field>
+</div>
+<!--------------------------------------------------------------------------------------------------------------------->
+<br>
+<mat-toolbar color="warn">
+  <mat-toolbar-row>
+    <span>Data Barang Rental</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<br>
+<div align="center">
+  <mat-form-field>
+    <input matInput placeholder="Scan Barcode/SN">
+  </mat-form-field>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <!--<mat-form-field>-->
+    <!--<mat-select placeholder="Kategori Barang" [(ngModel)]="isi_tipe">-->
+      <!--<mat-option>&#45;&#45;</mat-option>-->
+      <!--<mat-option *ngFor="let tipe of tipe_pelanggan" [value]="tipe.value">-->
+        <!--{{tipe.value}}-->
+      <!--</mat-option>-->
+    <!--</mat-select>-->
+  <!--</mat-form-field>-->
+  <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+  <!--<mat-form-field>-->
+    <!--<mat-select placeholder="Nama Barang" [(ngModel)]="isi_tipe">-->
+      <!--<mat-option>&#45;&#45;</mat-option>-->
+      <!--<mat-option *ngFor="let tipe of tipe_pelanggan" [value]="tipe.value">-->
+        <!--{{tipe.value}}-->
+      <!--</mat-option>-->
+    <!--</mat-select>-->
+  <!--</mat-form-field>-->
+  <!--<mat-form-field>-->
+    <!--<mat-select placeholder="Serial Number" [(ngModel)]="isi_tipe">-->
+      <!--<mat-option>&#45;&#45;</mat-option>-->
+      <!--<mat-option *ngFor="let tipe of tipe_pelanggan" [value]="tipe.value">-->
+        <!--{{tipe.value}}-->
+      <!--</mat-option>-->
+    <!--</mat-select>-->
+  <!--</mat-form-field>-->
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <mat-form-field>
+    <input matInput placeholder="Harga Rental(/Bulan)">
+  </mat-form-field>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <mat-form-field>
+    <input matInput placeholder="Diskon Harga Rental">
+  </mat-form-field>
+  <br><br>
+  <div align="right" style="margin-right: 35px">
+    <button mat-raised-button color="primary">Add to List</button>&nbsp;&nbsp;&nbsp;
+    <button mat-raised-button color="primary">Batal</button>
+  </div>
+  <br><br>
+<!--------------------------------------------------------------------------------------------------------------------->
+  <div style="margin-right: 35px; margin-left: 30px">
+    <table mat-table [dataSource]="" class="mat-elevation-z8" >
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id Kategori </th>
+        <td mat-cell *matCellDef="let element"> {{element.kategori_id}} </td>
+      </ng-container>
+      <ng-container matColumnDef="kode">
+        <th mat-header-cell *matHeaderCellDef> Kode Kategori </th>
+        <td mat-cell *matCellDef="let element"> {{element.kode}} </td>
+      </ng-container>
+      <ng-container matColumnDef="nama">
+        <th mat-header-cell *matHeaderCellDef> Nama Kategori </th>
+        <td mat-cell *matCellDef="let element"> {{element.nama}} </td>
+      </ng-container>
+      <ng-container matColumnDef="opsi">
+        <th mat-header-cell *matHeaderCellDef> Opsi </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button color="primary"><mat-icon>edit</mat-icon></button>
+          <button mat-icon-button color="primary"><mat-icon>delete</mat-icon></button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  <br><br>
+  <div align="right" style="margin-right: 35px">
+    <button mat-raised-button color="primary">Simpan Dokumen</button>&nbsp;&nbsp;&nbsp;
+
+    <button mat-raised-button color="primary">Batal</button>
+    <br><br>
+    <button mat-raised-button color="primary">Canceled</button>&nbsp;&nbsp;&nbsp;
+    <button mat-raised-button color="primary">Approved</button>&nbsp;&nbsp;&nbsp;
+    <button mat-raised-button color="primary">Cetak Invoice</button>
+  </div>
+  <br>
+</div>
